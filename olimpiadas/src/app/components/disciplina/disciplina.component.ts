@@ -16,7 +16,7 @@ export class DisciplinaComponent implements OnInit {
   disciplinas: Disciplina[] | any;
   disciplina: Disciplina | any;
   disciplinaForm: FormGroup;
-  submitted = false;
+  submitted: Boolean;
   modalTitle: String;
 
   constructor(private disciplinaService: DisciplinaService, private formBuilder: FormBuilder) { }
@@ -34,7 +34,11 @@ export class DisciplinaComponent implements OnInit {
 
   // Cosultar lista de disciplinas
   getDisciplinas(){
-    this.disciplina = [new Disciplina(1, "Luchas", "Primer disciplina", 1)];
+    
+    this.disciplinas = [new Disciplina(1, "Luchas", "Primer disciplina", 1),
+    new Disciplina(1, "Taekwondo", "Segunda disciplina", 1),
+    new Disciplina(1, "Gimnasia", "Tercer disciplina", 1)
+  ];
     this.disciplinaService.getDisciplinas().subscribe(
       res => {
         this.disciplinas = res;
