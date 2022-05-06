@@ -10,6 +10,7 @@
 			<ul class="navbar-nav text-uppercase ml-auto">
                 <li class="nav-item" *ngIf="!isadmin"><a class="nav-link js-scroll-trigger" routerLink="/">Inicio</a></li>
 				<li class="nav-item" *ngIf="!isadmin"><a class="nav-link js-scroll-trigger" routerLink="/disciplina">Disciplinas</a></li>
+				<li class="nav-item" *ngIf="isadmin"><a class="nav-link js-scroll-trigger" (click)="logout()" routerLink="/">Cerrar Sesión</a></li>
 			</ul>
 		</div>
 	</div>
