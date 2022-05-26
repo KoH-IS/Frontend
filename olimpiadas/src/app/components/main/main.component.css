@@ -3,9 +3,12 @@ header.masthead {
     padding-bottom: 6rem;
     text-align: center;
     color: #fff;
+<<<<<<< Updated upstream
     /*
     background-image: url("../../../assets/img/Fondo2.png");
     */
+=======
+>>>>>>> Stashed changes
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: top center;
@@ -166,9 +169,12 @@ header.masthead {
   border-radius: 100%;
   border: 2px solid #aaa;
   background-size: cover;
+<<<<<<< Updated upstream
   /*
   background-image: url("../../../assets/img/Perfil.png");
   */
+=======
+>>>>>>> Stashed changes
 }
 
 .form-box input{

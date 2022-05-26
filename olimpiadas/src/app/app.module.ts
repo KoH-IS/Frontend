@@ -8,8 +8,13 @@ import { AppComponent } from './app.component';
 import { DisciplinaComponent } from './components/disciplina/disciplina.component';
 import { MainComponent } from './components/main/main.component';
 import { NavComponent } from './components/nav/nav.component';
+<<<<<<< Updated upstream
 import { LoginComponent } from './components/autenticacion/login/login.component';
 import { LoginAdministradorComponent } from './components/autenticacion/login-administrador/login-administrador.component';
+=======
+import { EntrenadorComponent } from './components/entrenador/entrenador.component';
+import { CompetidorComponent } from './components/competidor/competidor.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -17,8 +22,13 @@ import { LoginAdministradorComponent } from './components/autenticacion/login-ad
     DisciplinaComponent,
     MainComponent,
     NavComponent,
+<<<<<<< Updated upstream
     LoginComponent,
     LoginAdministradorComponent
+=======
+    EntrenadorComponent,
+    CompetidorComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Disciplina {\n  constructor(id, disciplina, descripcion, status) {\n    this.id = id;\n    this.disciplina = disciplina;\n    this.descripcion = descripcion;\n    this.status = status;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
