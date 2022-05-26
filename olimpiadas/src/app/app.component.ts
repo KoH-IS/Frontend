@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'olimpiadas';
-  texto_navegacion = "KoH";
+  texto_navegacion = "TaPok";
 }
