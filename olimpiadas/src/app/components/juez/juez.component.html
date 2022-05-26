@@ -1,0 +1,112 @@
+<div style="height: 110px;"></div>
+<div class="container-fluid">
+    <div class="card mb-3">
+
+        <div class="card-header">
+            <h3><i class="fa-solid fa-medal"></i>&nbsp;&nbsp;Juez</h3>
+            <button style="float: right;" (click)="openModalJuez()" type="button" class="btn btn-success btn-sm">Agregar Juez<i class="fa-solid fa-floppy-disk"></i></button>
+        </div>
+
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Apellidos</th>
+                        <th class="text-center">Disciplina</th>
+                        <th class="text-center">email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let juez of jueces">
+                        <td class="text-center">{{ juez.nombre }}</td>
+                        <td class="text-center">{{ juez.apellido_paterno + juez.apellido_materno }}</td>
+                        <td class="text-center">{{ juez.disciplina }}</td>
+                        <td class="text-center">{{ juez.email }}</td>
+                        <td>
+                            <div>
+                                <button (click)="updateJuez(juez)" type="button" class="btn btn-outline-primary">Editar <i class="fas fa-edit"></i></button>
+                                &nbsp;&nbsp;
+                                <button (click)="deleteJuez(juez.id)" type="button" class="btn btn-outline-danger">Eliminar <i class="fas fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<div class="modal" id="juezModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">{{modalTitle}} Juez</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <form [formGroup]="juezForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="nombre">Nombre<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="nombre" class="form-controls" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"/>
+                        <div *ngIf="submitted && f.nombre.errors" class="invalid-deefback">
+                            <div *ngIf="f.nombre.errors.required">El nombre del juez es obligatorio</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido_paterno">Apellido paterno<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="apellido_paterno" class="form-controls" [ngClass]="{ 'is-invalid': submitted && f.apellido_paterno.errors }"/>
+                        <div *ngIf="submitted && f.apellido_paterno.errors" class="invalid-deefback">
+                            <div *ngIf="f.apellido_paterno.errors.required">El apellido paterno es obligatorio</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido_materno">Apellido materno<span class="text-danger">*</span></label>
+                        <input type="text" formControlName="apellido_materno" class="form-controls" [ngClass]="{ 'is-invalid': submitted && f.apellido_materno.errors }"/>
+                        <div *ngIf="submitted && f.apellido_materno.errors" class="invalid-deefback">
+                            <div *ngIf="f.apellido_materno.errors.required">El apellido materno es obligatorio</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="disciplina_id">Disciplina <span class="text-danger">*</span></label>
+                        <select class="form-control" (change)="cambioDisciplina($event.target)">
+                            <option [ngValue]="undefined" selected>Selecciona una disciplina</option>
+                            <option *ngFor="let d of disciplinas" [ngValue]="d">{{ d.disciplina }}</option>
+                        </select>
+                        <div *ngIf="submitted && f.disciplina_id.errors" class="invalid-feedback">
+                            <div *ngIf="f.disciplina_id.errors.required">La disciplina es obligatorio</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico <span class="text-danger">*</span></label>
+                        <input name="email" type="email" placeholder="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">El correo electrónico del juez es obligatorio</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña <span class="text-danger">*</span></label>
+                        <input name="password" type="password" placeholder="Contraseña" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">El password es obligatorio</div>
+                            <div *ngIf="f.password.errors.minLength">Tu contraseña debe tener min. 8 caracteres</div>
+                        </div>
+                    </div>
+
+                    <p class="text-right"><span class="text-danger">*</span>Campos requeridos</p>
+                    <div>
+                        <button class="btn btn-outline-success btn-block">Guardar<i class="fas fa-save"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

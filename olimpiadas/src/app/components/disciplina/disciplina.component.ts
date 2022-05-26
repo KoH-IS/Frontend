@@ -49,9 +49,9 @@ export class DisciplinaComponent implements OnInit {
   }
 
   // Consultar una disciplina
-  getDisciplina(id){
-    this.disciplinas = null;
-    this.disciplinaService.getDisciplina(id).subscribe(
+  getDisciplina(disciplina){
+    this.disciplina = null;
+    this.disciplinaService.getDisciplina(disciplina).subscribe(
       res => {
         this.disciplina = res;
       },

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
@@ -33,5 +33,4 @@ export class NavComponent implements OnInit {
     localStorage.removeItem('token');
     window.location.reload();
   }
-
 }
