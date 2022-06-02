@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="competidor.component.css">
+<div style="height: 110px;"></div>
+    
+  <!--  <li id="nav-dropdown" class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true"><i class="fas fa-user fa-fw"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><a class="dropdown-item" href="http://localhost:4200/">Cerrar Sesión</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/calificaciones">Ver calificaciones</a></li>
+      </ul>
+    </li>
+-->
+
+<nav class="navbar bg-light">
+<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4" >
+  
+<li id="nav-dropdown" class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true"><i class="fas fa-user fa-fw"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><a class="dropdown-item" href="http://localhost:4200/">Cerrar Sesión</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="/calificaciones">Ver calificaciones</a></li>
+      </ul> 
+  </li>
+</ul>
+
+
+
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="./../../../assets/img/logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      Bootstrap
+    </a>
+  </div>
+</nav>
+
+
+
+<div class="d-flex">
+    <div id="sidebbar-container" class="bg-primary">
+      <div class="titulo">
+				<h4 class="text-light font-weight-bold" >Competidores</h4>
+</div>
+      
+
+      <div class="menu">
+        <a href="/login" class="d-block text-light p-3 mr-3 center"> iniciar sesion</a>
+        <a href="/registro" class="d-block text-light p-3 mr-3 center"> registrarse</a>
+				<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+				<p class="text-light p-3"> Síguenos en nuestras redes sociales</p>
+				<a href="#"><img src="../../../assets/img/logoGH.png" class="img-fluid rounded-circle p-1"  alt="github" width="50" height="50"></a>
+				<a href="#"><img src="../../../assets/img/logoFB.png" class="img-fluid rounded-circle p-1"  alt="Facebook" width="50" height="50"></a>
+				<a href="#"><img src="../../../assets/img/logoIG.jpg" class="img-fluid rounded-circle p-1"  alt="Instagram" width="50" height="50"></a>
+				<a href="#"><img src="../../../assets/img/logoTT.png" class="img-fluid rounded-circle p-1"  alt="Twitter" width="50" height="50"></a>
+				
+			</div>
+    </div>    
+  
+       
+    <div id="content">  
+    <section>
+      <div class="card" style="whidth:60rem;">
+        <div class="card-header">
+          <h3><i class="fa-solid fa-medal"></i>&nbsp;&nbsp;Competidor</h3>
+          <button type="float" type="button" class="btn btn-success btn-sm"> Agregar Competidor</button>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead class="thead-dark">
+              <tr>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Apellidos</th>
+                <th class="text-center">Disciplina</th>
+                <th class="text-center">email</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <div>
+                <button type="button" class="btn btn-outline-primary">Editar </button>
+                <button type="button" class="btn btn-outline-danger">Eliminar </button>  
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+
+
+  
+</div>
+

@@ -2,7 +2,7 @@ export class Disciplina{
     id: number;
     disciplina: String;
     descripcion: String;
-    status: number;
+    status: number;cd
 
     constructor(id, disciplina, descripcion, status){
         this.id = id;
