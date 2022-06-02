@@ -12,7 +12,7 @@ export class EntrenadorService {
 
   API_URI = 'http://localhost:8081';
   getEntrenadores(){
-    return this.http.get<Entrenador>(this.API_URI+'/entrenador/'+Entrenador);
+    return this.http.get<Entrenador>(this.API_URI+'/entrenador');
   }
 
   createEntrenador(entrenador: Entrenador){

@@ -13,7 +13,7 @@ export class JuezService {
   constructor(private http: HttpClient) { }
 
   getJueces(){
-    return this.http.get<Juez[]>(this.API_URI+'/juez');
+    return this.http.get<Juez[]>(this.API_URI+'/jueX');
   }
 
   getJuez(email: String){
