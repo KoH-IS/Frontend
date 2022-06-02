@@ -11,6 +11,8 @@ import { LoginComponent } from './components/autenticacion/login/login.component
 import { LoginAdministradorComponent } from './components/autenticacion/login-administrador/login-administrador.component';
 import { JuezComponent } from './components/juez/juez.component';
 import { RegistroComponent } from './components/autenticacion/registro/registro.component';
+import { EntrenadorComponent } from './components/entrenador/entrenador.component';
+import { CompetidorComponent } from './components/competidor/competidor.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { RegistroComponent } from './components/autenticacion/registro/registro.
     LoginComponent,
     LoginAdministradorComponent,
     JuezComponent,
-    RegistroComponent
+    RegistroComponent,
+    EntrenadorComponent,
+    CompetidorComponent
   ],
   imports: [
     BrowserModule,

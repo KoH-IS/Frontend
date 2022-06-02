@@ -6,7 +6,7 @@ import { RegistroComponent } from './components/autenticacion/registro/registro.
 import { DisciplinaComponent } from './components/disciplina/disciplina.component';
 import { JuezComponent } from './components/juez/juez.component';
 import { NavComponent } from './components/nav/nav.component';
-import { AuthGuard } from './_helpers/auth.guard';
+
 
 const routes: Routes = [
   { path: '', component: NavComponent },
@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'disciplina',
     component: DisciplinaComponent,
-    canActivate: [AuthGuard],
+    
     data: {
       expectedRole: 'admin@mail.com'
     }
