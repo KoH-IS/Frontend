@@ -1,25 +1,27 @@
 import { Disciplina } from "./disciplina";
 
 export class Juez{
-    id: number;
-    nombre: String;
-    apellido_paterno: String;
-    apellido_materno: String;
+    juez_id: number;
+    name: String;
+    surname: String;
+    rfc: String;
     disciplina_id: number;
     disciplina: Disciplina;
     status: number;
-    email: String;
+    mail: String;
     password: String;
+    
+    
 
-    constructor(id, nombre, apellido_paterno, apellido_materno, disciplina_id, disciplina, status, email, password){
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido_paterno = apellido_paterno;
-        this.apellido_materno = apellido_materno;
+    constructor(juez_id, name, surname, rfc, disciplina_id, disciplina, status, mail, password){
+        this.juez_id = juez_id;
+        this.name = name;
+        this.surname = surname;
+        this.rfc = rfc;
         this.disciplina_id = disciplina_id;
         this.disciplina = disciplina;
         this.status = status;
-        this.email = email;
+        this.mail = mail;
         this.password = password;
     }
 }

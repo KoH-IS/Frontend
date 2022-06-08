@@ -6,6 +6,9 @@ import { DisciplinaService } from 'src/app/_services/disciplina.service';
 import { JuezService } from 'src/app/_services/juez.service';
 import Swal from 'sweetalert2';
 
+
+
+
 declare var $: any;
 
 @Component({
@@ -27,19 +30,19 @@ export class JuezComponent implements OnInit {
 
   ngOnInit(): void {
     this.juezForm = this.formBuilder.group({
-      id: [''],
-      nombre: ['', Validators.required],
-      apellido_paterno: ['', Validators.required],
-      apellido_materno: [''],
+      juez_id: [''],
+      name: ['', Validators.required],
+      surname: ['', Validators.required],
+      rfc: [''],
       disciplina_id: [''],
       disciplina: [''],
       status: [''],
+      mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
-      email: ['', [Validators.required, Validators.email]]
     });
-
-    this.getDisciplinas();
+    
     this.getJueces();
+    this.getDisciplinas();
   }
 
   getDisciplinas(){
@@ -56,6 +59,7 @@ export class JuezComponent implements OnInit {
   }
 
   getDisciplina(disciplina){
+    console.log('funcion get dischiplina')
     this.disciplina = null;
     this.disciplinaService.getDisciplina(disciplina).subscribe(
       res => {
@@ -76,9 +80,9 @@ export class JuezComponent implements OnInit {
     )
   }
 
-  getJuez(id){
+  getJuez(juez_id){
     this.juez = null;
-    this.juezService.getJuez(id).subscribe(
+    this.juezService.getJuez(juez_id).subscribe(
       res => {
         this.juez = res;
       },
@@ -86,7 +90,7 @@ export class JuezComponent implements OnInit {
     )
   }
 
-  deleteJuez(id){
+  deleteJuez(juez_id){
     Swal.fire({
       title: 'Eliminar Juez',
       text: '¿Estás seguro de eliminar al juez?',
@@ -96,7 +100,7 @@ export class JuezComponent implements OnInit {
       denyButtonText: 'No eliminar',
     }).then((result) => {
       if(result.isConfirmed){
-        this.juezService.deleteJuez(id).subscribe(
+        this.juezService.deleteJuez(juez_id).subscribe(
           res => {
             Swal.fire(
               'Eliminado!',
@@ -137,7 +141,8 @@ export class JuezComponent implements OnInit {
         err => console.error(err)
       )
     }else{
-      console.log(this.juezForm.value);
+      
+      console.log('entró al else');
       this.juezService.updateJuez(this.juezForm.value).subscribe(
         res => {
           Swal.fire({
@@ -165,14 +170,14 @@ export class JuezComponent implements OnInit {
 
   updateJuez(juez: Juez){
     this.submitted = true;
-    this.juezForm.controls['id'].setValue(juez.id);
-    this.juezForm.controls['nombre'].setValue(juez.nombre);
-    this.juezForm.controls['apellido_paterno'].setValue(juez.apellido_paterno);
-    this.juezForm.controls['apellido_materno'].setValue(juez.apellido_materno);
+    this.juezForm.controls['juez_id'].setValue(juez.juez_id);
+    this.juezForm.controls['name'].setValue(juez.name);
+    this.juezForm.controls['surname'].setValue(juez.surname);
+    this.juezForm.controls['rfc'].setValue(juez.rfc);
     this.juezForm.controls['disciplina'].setValue(juez.disciplina);
     this.juezForm.controls['disciplina_id'].setValue(juez.disciplina_id);
     this.juezForm.controls['status'].setValue(juez.status);
-    this.juezForm.controls['email'].setValue(juez.email);
+    this.juezForm.controls['mail'].setValue(juez.mail);
     this.juezForm.controls['password'].setValue(juez.password);
 
     this.modalTitle = "Actualizar";
@@ -184,7 +189,7 @@ export class JuezComponent implements OnInit {
     this.getDisciplina(seleccion.value);
     console.log(this.disciplina);
     this.juezForm.controls['disciplina'].setValue(this.disciplina);
-    this.juezForm.controls['disciplina_id'].setValue(this.disciplina.id);
+    this.juezForm.controls['disciplina_id'].setValue(this.disciplina.disciplina_id);
   }
 
   get f() { return this.juezForm.controls; }
@@ -195,3 +200,7 @@ export class JuezComponent implements OnInit {
     $("#juezModal").modal("show");
   }
 }
+function id_juez(id_juez: any) {
+  throw new Error('Function not implemented.');
+}
+

@@ -13,11 +13,11 @@ export class JuezService {
   constructor(private http: HttpClient) { }
 
   getJueces(){
-    return this.http.get<Juez[]>(this.API_URI+'/jueX');
+    return this.http.get<Juez[]>(this.API_URI+'/juez');
   }
 
-  getJuez(email: String){
-    return this.http.get<Juez>(this.API_URI+'/juez/'+email);
+  getJuez(mail: String){
+    return this.http.get<Juez>(this.API_URI+'/juez/'+mail);
   }
 
   createJuez(juez: Juez){
@@ -25,7 +25,7 @@ export class JuezService {
   }
 
   updateJuez(juez: Juez){
-    return this.http.put(this.API_URI+'/juez/'+juez.id, juez);
+    return this.http.put(this.API_URI+'/juez/'+juez.juez_id, juez);
   }
 
   deleteJuez(id: number){

@@ -23,6 +23,7 @@ a:hover{
 
 }
 #sidebar-container .titulo{
+    white-space: nowrap;
     padding: .875rem 1.25rem;
 
 }

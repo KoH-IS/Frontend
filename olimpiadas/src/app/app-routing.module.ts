@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'disciplina', component: DisciplinaComponent },
   { path: 'juez', component: JuezComponent },
   { path: 'registro', component: RegistroComponent },
-  {path: 'entrenador',component:EntrenadorComponent},
-  {path:'competidor',component:CompetidorComponent},
+  { path: 'entrenador',component:EntrenadorComponent},
+  { path:'competidor',component:CompetidorComponent},
 
   {
     path: 'disciplina',
