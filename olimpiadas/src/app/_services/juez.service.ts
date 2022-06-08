@@ -28,11 +28,11 @@ export class JuezService {
     return this.http.put(this.API_URI+'/juez/'+juez.juez_id, juez);
   }
 
-  deleteJuez(id: number){
-    return this.http.delete(this.API_URI+'/juez/'+id);
+  deleteJuez(juez_id: number){
+    return this.http.delete(this.API_URI+'/juez/'+juez_id);
   }
 
-  updateJuezDisciplina(id: number, disciplina: Disciplina){
-    return this.http.put(this.API_URI+'/juez/'+id+'/disciplina', disciplina);
+  updateJuezDisciplina(disciplina_id: number, disciplina: Disciplina){
+    return this.http.put(this.API_URI+'/juez/'+disciplina_id+'/disciplina', disciplina);
   }
 }

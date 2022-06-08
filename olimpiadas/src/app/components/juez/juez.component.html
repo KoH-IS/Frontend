@@ -1,4 +1,4 @@
-<link  href="juez.component.css">
+<link type="text/css" href="juez.component.css">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="mainNav">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -68,7 +68,7 @@
                                 <td class="text-center">{{ juez.name}}</td>
                                 <td class="text-center">{{ juez.surname}}</td>
                                 <td class="text-center">{{ juez.rfc}}</td>
-                                <td class="text-center">{{ juez.email}}</td>
+                                <td class="text-center">{{ juez.mail}}</td>
                                 <td class="text-center">{{ juez.name}}</td>
                                 
                                 
@@ -78,7 +78,7 @@
                                     <div>
                                         <button (click)="updateJuez(juez)" type="button" class="btn btn-outline-primary">Editar <i class="fas fa-edit"></i></button>
                                         &nbsp;&nbsp;
-                                        <button (click)="deleteJuez(juez.id)" type="button" class="btn btn-outline-danger">Eliminar <i class="fas fa-trash"></i></button>
+                                        <button (click)="deleteJuez(juez.juez_id)" type="button" class="btn btn-outline-danger">Eliminar <i class="fas fa-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>

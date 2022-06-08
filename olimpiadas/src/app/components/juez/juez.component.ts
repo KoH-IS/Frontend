@@ -142,7 +142,7 @@ export class JuezComponent implements OnInit {
       )
     }else{
       
-      console.log('entró al else');
+      
       this.juezService.updateJuez(this.juezForm.value).subscribe(
         res => {
           Swal.fire({
