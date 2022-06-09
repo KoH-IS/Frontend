@@ -104,14 +104,14 @@
                 <form [formGroup]="juezForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <label for="name">Nombre<span class="text-danger">*</span></label>
-                        <input type="text" formControlName="name" class="form-controls" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"/>
+                        <input type="text" formControlName="name" class="form-controls" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
                         <div *ngIf="submitted && f.name.errors" class="invalid-deefback">
                             <div *ngIf="f.name.errors.required">El nombre del juez es obligatorio</div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="surname">Apellido paterno<span class="text-danger">*</span></label>
-                        <input type="text" formControlName="surname" class="form-controls" [ngClass]="{ 'is-invalid': submitted && f.apellido_paterno.errors }"/>
+                        <input type="text" formControlName="surname" class="form-controls" [ngClass]="{ 'is-invalid': submitted && f.surname.errors }"/>
                         <div *ngIf="submitted && f.surname.errors" class="invalid-deefback">
                             <div *ngIf="f.surname.errors.required">El apellido paterno es obligatorio</div>
                         </div>

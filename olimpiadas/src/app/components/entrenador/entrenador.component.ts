@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { EntrenadorService } from '../../_services/entrenador.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EntrenadorService } from '../../_services/entrenador.service';
+
 import { Entrenador } from 'src/app/_models/entrenador';
+
+import { DisciplinaService } from 'src/app/_services/disciplina.service';
+import { Disciplina } from 'src/app/_models/disciplina';
 import Swal from 'sweetalert2';
 
-//import Swal from 'sweetalert2';
+
 declare var $: any;
+
 @Component({
   selector: 'app-entrenador',
   templateUrl: './entrenador.component.html',
@@ -14,22 +19,72 @@ declare var $: any;
 export class EntrenadorComponent implements OnInit {
   Entrenadores: Entrenador[] | any;
   entrenador: Entrenador | any;
+  disciplinas: Disciplina[] | any;
+  disciplina: Disciplina | any;
   entrenadorForm: FormGroup;
   competidorForm: FormGroup;
   submitted = false;
   modalTitle: String;
 
-  constructor(private entrenadorService: EntrenadorService, private formBuilder: FormBuilder) { }
+  constructor(private entrenadorService: EntrenadorService, private disciplinaService: DisciplinaService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.entrenadorForm = this.formBuilder.group({
-      id: [''],
-      nombre: [''],
-      apellidop: [''],
-      apellidom: [''],
+      entrenador_id: [''],
+      name: [''],
+      surname: [''],
+      rfc: [''],
+      disciplina_id:[''],
       disciplina:['',Validators.required],
-      Email:['']
+      status:[''],
+      mail:['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
+    this.getDisciplinas();
+    this.getEntrenadores();
+}
+getDisciplinas(){
+  this.disciplinas = [];// [new Disciplina(1, "Luchas", "Primer disciplina", 1),
+ // new Disciplina(1, "Taekwondo", "Segunda disciplina", 1),
+  //new Disciplina(1, "Gimnasia", "Tercer disciplina", 1)];
+  this.disciplinaService.getDisciplinas().subscribe(
+    res => {
+      this.disciplinas = res;
+      console.log(this.disciplinas)
+    },
+    err => console.error(err)
+  )
+
+}
+getDisciplina(disciplina){
+
+  console.log('funcion get disciplina')
+  this.disciplina = null;
+  this.disciplinaService.getDisciplina(disciplina).subscribe(
+    res => {
+      this.disciplina = res;
+      console.log('get disciplina:')
+      console.log(this.disciplina);
+      console.log(typeof this.disciplina)
+      this.otrocambio()
+    
+    },
+    err => console.log('no se obtuvo la disciplina')
+  )
+}
+cambioDisciplina(seleccion){
+  console.log(seleccion.value);
+  this.getDisciplina(Number(seleccion.value));
+
+}
+otrocambio(){
+  console.log('otro cambio disciplina:')
+  console.log(this.disciplina)
+  console.log(typeof this.disciplina)
+
+  this.entrenadorForm.controls['disciplina'].setValue(this.disciplina);
+  
+
 }
 // Cosultar lista de entrenadores 
   getEntrenadores(){
@@ -42,11 +97,21 @@ export class EntrenadorComponent implements OnInit {
       err => console.error(err)
     )
   }
+  getEntrenador(entrenador_id){
+    this.entrenador = null;
+    this.entrenadorService.getEntrenador(entrenador_id).subscribe(
+      res => {
+        this.entrenador = res;
+      },
+      err => console.error(err)
+    )
+  }
   // agregar entrenador
   onSubmit(){
     this.submitted = true;
 
     if(this.entrenadorForm.invalid){
+      console.log(this.entrenadorForm)
       console.log("Formulario inválido");
       return;
     }
@@ -95,7 +160,7 @@ export class EntrenadorComponent implements OnInit {
   }
 
     // Eliminar una entrenador id
-    deleteentrenador(identrenador){
+    deleteentrenador(entrenador_id){
       Swal.fire({
         title: 'Eliminar entrenador',
         text: '¿Estás seguro de eliminar al entrenador?',
@@ -105,7 +170,7 @@ export class EntrenadorComponent implements OnInit {
         denyButtonText: 'No eliminar',
       }).then((result) => {
         if(result.isConfirmed){
-          this.entrenadorService.deleteEntrenador(identrenador).subscribe(
+          this.entrenadorService.deleteEntrenador(entrenador_id).subscribe(
             res => {
               Swal.fire(
                 'Eliminado!',
@@ -122,12 +187,16 @@ export class EntrenadorComponent implements OnInit {
     }
     //actualizar un entrenador
    updateEntrenador(entrenador: Entrenador){
-      this.submitted = true;
-      this.entrenadorForm.controls['idEntrenador'].setValue(entrenador.idEntrenador);
-      this.entrenadorForm.controls['Nombre'].setValue(entrenador.Nombre);
-      this.entrenadorForm.controls['ApellidoPaterno'].setValue(entrenador.ApellidoPaterno);
-      this.entrenadorForm.controls['ApellidoMaterno'].setValue(entrenador.ApellidoMaterno);
-      this.entrenadorForm.controls['Disciplina'].setValue(entrenador.Disciplina)
+    this.submitted = true;
+    this.entrenadorForm.controls['entrenador_id'].setValue(entrenador.entrenador_id);
+    this.entrenadorForm.controls['name'].setValue(entrenador.name);
+    this.entrenadorForm.controls['surname'].setValue(entrenador.surname);
+    this.entrenadorForm.controls['rfc'].setValue(entrenador.rfc);
+    this.entrenadorForm.controls['disciplina'].setValue(entrenador.disciplina);
+    this.entrenadorForm.controls['disciplina_id'].setValue(entrenador.disciplina);
+    this.entrenadorForm.controls['status'].setValue(entrenador.status);
+    this.entrenadorForm.controls['mail'].setValue(entrenador.mail);
+    this.entrenadorForm.controls['password'].setValue(entrenador.password);
       //no se cambia el valor de id del entrenador.
   
       this.modalTitle = "Actualizar";
@@ -233,9 +302,9 @@ export class EntrenadorComponent implements OnInit {
     updateCompetidor(competidor: Competidor){
       this.submitted = true;
       this.competidorForm.controls['idCompetidores'].setValue(competidor.id);
-      this.competidorForm.controls['nombre'].setValue(competidor.nombre);
-      this.competidorForm.controls['apellidop'].setValue(competidor.apellidop);
-      this.competidorForm.controls['apellidom'].setValue(competidor.apellidom);
+      this.competidorForm.controls['name'].setValue(competidor.name);
+      this.competidorForm.controls['surname'].setValue(competidor.surname);
+      this.competidorForm.controls['rfc'].setValue(competidor.rfc);
       this.competidorForm.controls['competencia'].setValue(competidor.competencia)
       //no se cambia el valor de id del entrenador.
   

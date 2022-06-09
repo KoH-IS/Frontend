@@ -16,7 +16,7 @@ export class DisciplinaService {
   }
 
   getDisciplina(disciplina: String){
-    return this.http.get<Disciplina>(this.API_URI+'/disciplina/'+disciplina);
+    return this.http.get<Disciplina>(this.API_URI+'/disciplina/'+1);
   }
 
   createDisciplina(disciplina: Disciplina){
@@ -24,10 +24,10 @@ export class DisciplinaService {
   }
 
   updateDisciplina(disciplina: Disciplina){
-    return this.http.put(this.API_URI+'/disciplina/'+disciplina.id, disciplina);
+    return this.http.put(this.API_URI+'/disciplina/'+disciplina.disciplina_id, disciplina);
   }
 
-  deleteDisciplina(id: number){
-    return this.http.delete(this.API_URI+'/disciplina/'+id);
+  deleteDisciplina(disciplina_id: number){
+    return this.http.delete(this.API_URI+'/disciplina/'+disciplina_id);
   }
 }

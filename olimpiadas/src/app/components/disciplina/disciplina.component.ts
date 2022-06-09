@@ -23,7 +23,7 @@ export class DisciplinaComponent implements OnInit {
 
   ngOnInit(): void {
     this.disciplinaForm = this.formBuilder.group({
-      id: [''],
+      disciplina_id: [''],
       disciplina: ['', Validators.required],
       descripcion: ['', Validators.required],
       status: ['']
@@ -60,7 +60,7 @@ export class DisciplinaComponent implements OnInit {
   }
 
   // Eliminar una disciplina
-  deleteDisciplina(id){
+  deleteDisciplina(disciplina_id){
     Swal.fire({
       title: 'Eliminar Disciplina',
       text: '¿Estás seguro de eliminar la disciplina?',
@@ -70,7 +70,7 @@ export class DisciplinaComponent implements OnInit {
       denyButtonText: 'No eliminar',
     }).then((result) => {
       if(result.isConfirmed){
-        this.disciplinaService.deleteDisciplina(id).subscribe(
+        this.disciplinaService.deleteDisciplina(disciplina_id).subscribe(
           res => {
             Swal.fire(
               'Eliminado!',
@@ -140,7 +140,7 @@ export class DisciplinaComponent implements OnInit {
 
   updateDisciplina(disciplina: Disciplina){
     this.submitted = true;
-    this.disciplinaForm.controls['id'].setValue(disciplina.id);
+    this.disciplinaForm.controls['disciplina_id'].setValue(disciplina.disciplina_id);
     this.disciplinaForm.controls['disciplina'].setValue(disciplina.disciplina);
     this.disciplinaForm.controls['descripcion'].setValue(disciplina.descripcion);
     this.disciplinaForm.controls['status'].setValue(disciplina.status);

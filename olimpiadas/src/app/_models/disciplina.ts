@@ -1,11 +1,11 @@
 export class Disciplina{
-    id: number;
+    disciplina_id: number;
     disciplina: String;
     descripcion: String;
     status: number;cd
 
-    constructor(id, disciplina, descripcion, status){
-        this.id = id;
+    constructor(disciplina_id, disciplina, descripcion, status){
+        this.disciplina_id = disciplina_id;
         this.disciplina = disciplina;
         this.descripcion = descripcion;
         this.status = status;
